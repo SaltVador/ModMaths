@@ -1,6 +1,8 @@
 package langModel;
 
 
+import java.util.List;
+
 /**
  * Class NaiveLanguageModel: class implementing the interface LanguageModelInterface by creating a naive language model,
  * i.e. a n-gram language model with no smoothing.
@@ -24,31 +26,37 @@ public class NaiveLanguageModel implements LanguageModelInterface {
 	 * Constructor.
 	 */
 	public NaiveLanguageModel(){
-		//TODO
+		this.ngramCounts = new NgramCounts();
+		this.vocabulary = new Vocabulary();
 	}
 	
 
 	@Override
 	public int getLMOrder() {
-		// TODO Auto-generated method stub
-		return 0;
+		return ngramCounts.getMaximalOrder();
 	}
 
 	@Override
 	public void setNgramCounts(NgramCountsInterface ngramCounts, VocabularyInterface vocab) {
-		// TODO Auto-generated method stub
+		this.ngramCounts=ngramCounts;
+		this.vocabulary=vocab;
 	}
 
 	@Override
 	public Double getNgramProb(String ngram) {
-		// TODO Auto-generated method stub
-		return null;
+
+		int res = ngramCounts.getCounts(ngram)/ngramCounts.getNgramCounterSize();
+		return (double)res;
 	}
 
 	@Override
 	public Double getSentenceProb(String sentence) {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> decomposeIntoNgrams = NgramUtils.decomposeIntoNgrams(sentence,ngramCounts.getMaximalOrder());
+		Double res = (double)0;
+		for (String var : decomposeIntoNgrams) {
+			res=res+getNgramProb(var);
+		}
+		return res;
 	}
 
 }
