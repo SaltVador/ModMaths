@@ -1,6 +1,7 @@
 package langModel;
 
 
+import java.io.FileNotFoundException;
 import java.util.Set;
 
 
@@ -105,7 +106,7 @@ public interface NgramCountsInterface {
 	 * 
 	 * @param filePath the path of the file used to save the counts of the n-grams.
 	 */
-	public void writeNgramCountFile (String filePath);
+	public void writeNgramCountFile (String filePath) throws FileNotFoundException;
 	
 	
 	/**

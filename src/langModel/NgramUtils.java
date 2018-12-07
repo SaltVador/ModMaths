@@ -1,6 +1,8 @@
 package langModel;
 
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -78,7 +80,7 @@ public class NgramUtils {
         List<String> ngrams = new ArrayList<String>();
         String[] mots = sentence.split(" ");
         for (int i = 0; i<mots.length; i++) {
-            String ngram = null;
+            String ngram="";
             if (i<order){
                 for (int j = 0; j<=i;j++){
                     ngram = ngram + mots[j] + " ";
@@ -127,7 +129,7 @@ public class NgramUtils {
     	  String[] mots = sentence.split(" ");
     	  for    (int i=minOrder; i<=maxOrder; i++){
     	     for(int j = i-1;j<mots.length;j++) {
-    	        String ngram = null;
+    	        String ngram = "";
     	        for(int y = i-1; y>=0; y--) {
     	           ngram = ngram + mots[j-y] + " ";
     	        }

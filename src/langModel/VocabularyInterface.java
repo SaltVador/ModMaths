@@ -1,6 +1,7 @@
 package langModel;
 
 
+import java.io.FileNotFoundException;
 import java.util.Set;
 
 
@@ -86,6 +87,6 @@ public interface VocabularyInterface {
 	 * 
 	 * @param filePath the path of the file o contain the vocabulary.
 	 */
-	public void writeVocabularyFile (String filePath);
+	public void writeVocabularyFile (String filePath) throws FileNotFoundException;
 	
 }

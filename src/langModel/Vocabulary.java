@@ -78,7 +78,7 @@ public class Vocabulary implements VocabularyInterface {
 	}
 
 	@Override
-	public void writeVocabularyFile(String filePath) {
+	public void writeVocabularyFile(String filePath) throws FileNotFoundException {
 		// TODO Auto-generated method stub
 		 PrintWriter writer = new PrintWriter(filePath);
 	        for(String mot : this.vocabulary) {
