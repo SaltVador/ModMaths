@@ -12,7 +12,9 @@ public class LaplaceLanguageModel extends NaiveLanguageModel {
 
 	@Override
 	public Double getNgramProb(String ngram) {
-		//TODO
-		return 0.0;
+
+		int res = (ngramCounts.getCounts(ngram)+1)/(ngramCounts.getNgramCounterSize()+ngramCounts.getTotalWordNumber()-1);
+		return (double)res;
+
 	}
 }
